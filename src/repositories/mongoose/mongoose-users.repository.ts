@@ -10,7 +10,11 @@ export class MongooseUsersRepository implements UsersRepository {
   constructor(@InjectModel('User') private userModel: Model<IUser>) { }
 
   async create(createUserDTO: CreateUserDTO): Promise<IUser> {
-    const user = new this.userModel(createUserDTO);
+    const user = new this.userModel({
+      book: null,
+      book_id: null,
+      ...createUserDTO,
+    });
 
     return user.save();
   }

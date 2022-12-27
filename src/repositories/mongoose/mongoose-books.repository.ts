@@ -11,7 +11,11 @@ export class MongooseBooksRepository implements BooksRepository {
   constructor(@InjectModel('Book') private bookModel: Model<IBook>) { }
 
   async create(createBookDTO: CreateBookDTO): Promise<IBook> {
-    const book = new this.bookModel(createBookDTO);
+    const book = new this.bookModel({
+      user: null,
+      user_id: null,
+      ...createBookDTO,
+    });
 
     return book.save();
   }
