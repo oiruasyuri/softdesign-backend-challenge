@@ -1,5 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IUser } from 'src/interfaces/user.interface';
 
 @Schema()
 export class Book {
@@ -8,9 +7,6 @@ export class Book {
 
   @Prop()
   synopsis: string;
-
-  @Prop({ type: Object })
-  user: IUser;
 
   @Prop()
   user_id: string;
