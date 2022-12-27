@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   Res,
   UseGuards,
 } from '@nestjs/common';
@@ -95,9 +96,9 @@ export class BooksController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  async findMany(@Res() response) {
+  async findMany(@Res() response, @Query('filter') filter: string) {
     try {
-      const books = await this.booksService.findMany();
+      const books = await this.booksService.findMany(filter);
 
       return response.status(HttpStatus.OK).json({
         message: 'Os livros foram encontrados com sucesso',

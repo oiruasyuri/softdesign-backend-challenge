@@ -40,7 +40,7 @@ export class BooksService {
     return await this.booksRepository.delete(id);
   }
 
-  async findMany(): Promise<IBook[]> {
-    return await this.booksRepository.findMany();
+  async findMany(filter: string): Promise<IBook[]> {
+    return await this.booksRepository.findMany(filter);
   }
 }

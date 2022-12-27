@@ -47,7 +47,13 @@ export class MongooseBooksRepository implements BooksRepository {
     return await this.bookModel.findByIdAndDelete(id);
   }
 
-  async findMany(): Promise<IBook[]> {
-    return this.bookModel.find();
+  async findMany(filter: string): Promise<IBook[]> {
+    if (!filter) {
+      return this.bookModel.find();
+    }
+
+    return this.bookModel.find({
+      $or: [{ title: { $in: filter } }, { synopsis: { $in: filter } }],
+    });
   }
 }

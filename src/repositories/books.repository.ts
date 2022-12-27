@@ -7,5 +7,5 @@ export abstract class BooksRepository {
   abstract findUnique(id: string): Promise<IBook>;
   abstract update(id: string, updateBookDTO: UpdateBookDTO): Promise<IBook>;
   abstract delete(id: string): Promise<IBook>;
-  abstract findMany(): Promise<IBook[]>;
+  abstract findMany(filter: string): Promise<IBook[]>;
 }
