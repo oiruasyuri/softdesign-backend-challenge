@@ -14,7 +14,6 @@ import { UsersService } from 'src/services/users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
-  @UseGuards(JwtAuthGuard)
   @Post()
   async create(@Body() createUserDTO: CreateUserDTO, @Res() response) {
     try {

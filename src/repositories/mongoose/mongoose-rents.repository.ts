@@ -31,4 +31,12 @@ export class MongooseRentsRepository implements RentsRepository {
 
     return { book: rentedBook, user: userWhoRented };
   }
+
+  async checkIfTheBookIsRented(book_id: string): Promise<boolean> {
+    const book = await this.bookModel.findById(book_id);
+
+    const bookIsRented = book.user_id === null ? false : true;
+
+    return bookIsRented;
+  }
 }
