@@ -10,4 +10,8 @@ export class UsersService {
   async create(createUserDTO: CreateUserDTO): Promise<IUser> {
     return await this.usersRepository.create(createUserDTO);
   }
+
+  async findUnique(email: string) {
+    return await this.usersRepository.findUnique(email);
+  }
 }

@@ -14,4 +14,8 @@ export class MongooseUsersRepository implements UsersRepository {
 
     return user.save();
   }
+
+  async findUnique(email: string): Promise<IUser> {
+    return await this.userModel.findOne({ email });
+  }
 }

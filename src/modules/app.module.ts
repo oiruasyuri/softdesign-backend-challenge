@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth.module';
 import { BooksModule } from './books.module';
 import { UsersModule } from './users.module';
 
@@ -9,6 +10,7 @@ import { UsersModule } from './users.module';
       dbName: 'mongodb',
     }),
     UsersModule,
+    AuthModule,
     BooksModule,
   ],
 })
