@@ -8,15 +8,18 @@ import {
   Patch,
   Post,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateBookDTO } from 'src/dtos/create-book.dto';
 import { UpdateBookDTO } from 'src/dtos/update-book.dto';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { BooksService } from 'src/services/books.service';
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly booksService: BooksService) { }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async create(@Body() createBookDTO: CreateBookDTO, @Res() response) {
     try {
@@ -34,6 +37,7 @@ export class BooksController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findUnique(@Param('id') id: string, @Res() response) {
     try {
@@ -51,6 +55,7 @@ export class BooksController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   async update(
     @Param('id') id: string,
@@ -74,6 +79,7 @@ export class BooksController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async delete(@Param('id') id: string, @Res() response) {
     try {
@@ -87,6 +93,7 @@ export class BooksController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findMany(@Res() response) {
     try {
