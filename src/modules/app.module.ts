@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { BooksModule } from './books.module';
 import { UsersModule } from './users.module';
 
 @Module({
@@ -8,6 +9,7 @@ import { UsersModule } from './users.module';
       dbName: 'mongodb',
     }),
     UsersModule,
+    BooksModule,
   ],
 })
 export class AppModule { }
