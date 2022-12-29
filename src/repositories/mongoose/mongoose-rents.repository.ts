@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IBook } from 'src/interfaces/book.interface';
+import { IBook } from 'src/books/interface/book.interface';
 import { IUser } from 'src/users/interface/user.interface';
 import { RentsRepository } from '../rents.repository';
 
