@@ -6,7 +6,7 @@ import { jwtConstants } from 'src/helpers/jwt-constants.helper';
 import { AuthService } from 'src/services/auth.service';
 import { JwtStrategy } from 'src/strategies/jwt.strategy';
 import { LocalStrategy } from 'src/strategies/local.strategy';
-import { UsersModule } from './users.module';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
   controllers: [AuthController],
