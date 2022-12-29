@@ -8,7 +8,7 @@ import { RentsRepository } from 'src/repositories/rents.repository';
 @Injectable()
 export class BooksService {
   constructor(
-    private booksRepository: BooksRepository,
+    private readonly booksRepository: BooksRepository,
     private readonly rentsRepository: RentsRepository,
   ) { }
 

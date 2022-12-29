@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
   Query,
-  Res,
+  Response,
   UseGuards,
 } from '@nestjs/common';
 import { CreateBookDTO } from 'src/dtos/create-book.dto';
@@ -22,7 +22,7 @@ export class BooksController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() createBookDTO: CreateBookDTO, @Res() response) {
+  async create(@Body() createBookDTO: CreateBookDTO, @Response() response) {
     try {
       const book = await this.booksService.create(createBookDTO);
 
@@ -40,7 +40,7 @@ export class BooksController {
 
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  async findUnique(@Param('id') id: string, @Res() response) {
+  async findUnique(@Param('id') id: string, @Response() response) {
     try {
       const book = await this.booksService.findUnique(id);
 
@@ -61,7 +61,7 @@ export class BooksController {
   async update(
     @Param('id') id: string,
     @Body() updateBookDTO: UpdateBookDTO,
-    @Res() response,
+    @Response() response,
   ) {
     try {
       const editedBook = await this.booksService.update(id, updateBookDTO);
@@ -82,7 +82,7 @@ export class BooksController {
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  async delete(@Param('id') id: string, @Res() response) {
+  async delete(@Param('id') id: string, @Response() response) {
     try {
       await this.booksService.delete(id);
 
@@ -96,7 +96,7 @@ export class BooksController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  async findMany(@Res() response, @Query('filter') filter: string) {
+  async findMany(@Response() response, @Query('filter') filter: string) {
     try {
       const books = await this.booksService.findMany(filter);
 
