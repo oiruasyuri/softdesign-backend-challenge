@@ -7,7 +7,7 @@ import {
   Response,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/auth/guard/jwt.guard';
 import { RentsService } from 'src/services/rents.service';
 
 @Controller('rents')
