@@ -8,7 +8,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guard/jwt.guard';
-import { RentsService } from 'src/services/rents.service';
+import { RentsService } from './rents.service';
 
 @Controller('rents')
 export class RentsController {
