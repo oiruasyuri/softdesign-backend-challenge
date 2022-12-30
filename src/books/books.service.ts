@@ -20,6 +20,10 @@ export class BooksService {
     return await this.booksRepository.create(createBookDTO);
   }
 
+  async find(filter: string) {
+    return await this.booksRepository.find(filter);
+  }
+
   async findOneByTitle(title: string) {
     return await this.booksRepository.findOneByTitle(title);
   }

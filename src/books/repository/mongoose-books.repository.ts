@@ -19,6 +19,19 @@ export class MongooseBooksRepository implements BooksRepository {
     return newBook.save();
   }
 
+  async find(filter: string) {
+    const filterRegex = new RegExp(filter, 'i');
+
+    const filteredBooks = await this.bookModel.find({
+      $or: [
+        { title: { $regex: filterRegex } },
+        { synopsis: { $regex: filterRegex } },
+      ],
+    });
+
+    return filteredBooks;
+  }
+
   async findOneByTitle(title: string) {
     const book = await this.bookModel.findOne({ title });
 

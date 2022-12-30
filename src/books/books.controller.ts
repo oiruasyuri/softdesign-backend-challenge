@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   Response,
   UseGuards,
 } from '@nestjs/common';
@@ -65,6 +66,18 @@ export class BooksController {
     return response.status(HttpStatus.OK).json({
       statusCode: HttpStatus.OK,
       message: 'O livro foi deletado com sucesso',
+    });
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async find(@Response() response, @Query('filter') filter: string) {
+    const books = await this.booksService.find(filter);
+
+    return response.status(HttpStatus.OK).json({
+      statusCode: HttpStatus.OK,
+      message: 'As informações de todos os livros foram obtidas',
+      books,
     });
   }
 }
