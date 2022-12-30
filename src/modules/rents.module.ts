@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RentsController } from 'src/controllers/rents.controller';
+import { BookSchema } from 'src/database/schemas/book.schema';
+import { UserSchema } from 'src/database/schemas/user.schema';
 import { MongooseRentsRepository } from 'src/repositories/mongoose/mongoose-rents.repository';
 import { RentsRepository } from 'src/repositories/rents.repository';
-import { BookSchema } from 'src/schemas/book.schema';
-import { UserSchema } from 'src/schemas/user.schema';
 import { RentsService } from 'src/services/rents.service';
 
 @Module({
